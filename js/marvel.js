@@ -1,0 +1,1 @@
+var marvel = angular.module("marvel", ["marvel.routes", "marvel.controllers"]);
