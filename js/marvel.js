@@ -1,1 +1,1 @@
-var marvel = angular.module("marvel", ["marvel.routes", "marvel.controllers"]);
+var marvel = angular.module("marvel", ["marvel.routes", "marvel.controllers", "marvel.constants", "marvel.services"]);

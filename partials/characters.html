@@ -1,1 +1,16 @@
-CHARACTERS
+<div class="container characters">
+    <div class="row">
+        <div class="col l3 m6 s12" ng-repeat="character in characters">
+            <div class="card small">
+                <div class="card-image">
+                    <img class="responsive-img" ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}" />
+                </div>
+                <div class="card-content">
+                    <div class="center">
+                        <span class="card-title truncate">{{character.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

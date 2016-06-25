@@ -11,9 +11,20 @@
 
         <!-- Material Icons -->
         <link rel="stylesheet" href="lib/material-icons/material-icons.css" type="text/css" />
+
+        <!-- Marvel -->
+        <link rel="stylesheet" href="css/marvel.css" type="text/css" />
     </head>
     
-    <body ng-app="marvel">
+    <body class="grey lighten-2" ng-app="marvel">
+        <div class="navbar-fixed">
+            <nav class="red darken-4">
+                <div class="nav-wrapper">
+                    <div class="brand-logo center">MARVEL <small>Characters</small></div>
+                </div>
+            </nav>
+        </div>
+        
         <div ng-view></div>
 
         <!-- jQuery v1.12.2 -->
@@ -36,5 +47,11 @@
 
         <!-- Marvel Controllers -->
         <script src="js/controllers.js" type="text/javascript"></script>
+
+        <!-- Marvel Constants -->
+        <script src="js/constants.js" type="text/javascript"></script>
+
+        <!-- Marvel Services -->
+        <script src="js/services.js" type="text/javascript"></script>
     </body>
 </html>
