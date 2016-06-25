@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col l3 m6 s12" ng-repeat="character in characters">
+        <a ng-href="#character/{{character.id}}">
             <div class="card small">
                 <div class="card-image">
                     <img class="responsive-img" ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}" />
@@ -11,6 +12,7 @@
                     </div>
                 </div>
             </div>
+            </a>
         </div>
     </div>
     
