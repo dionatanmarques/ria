@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="row">
+	    <div class="col s12">
+	        <div class="card-panel grey lighten-5 z-depth-1">
+	      		<div class="row">
+	        		<div class="col s2">
+	          			<img ng-show="character.thumbnail  != null" ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}" class="circle responsive-img" /> 
+	          			<img ng-show="character.thumbnail  == null" src="images/marvel-characters.jpg" class="circle responsive-img" />
+	        		</div>
+	        		<div class="col s10">
+	          			<span class="black-text">
+	            			<h2>{{character.name}}</h2>
+	            			<blockquote>
+	            			{{character.description}}
+	            			</blockquote>
+	          			</span>
+	        		</div>
+	      		</div>
+	    	</div>
+	 	</div>
+	 	<div class="row">
+	 		<div class="col s12 m8 l6">
+	 			<ul class="tabs">
+        			<li class="tab col s3"><a class="active" ng-href="#character/{{character.id}}/comics">Comics</a></li>
+        			<li class="tab col s3"><a ng-href="#character/{{character.id}}/stories">Stories</a></li>
+        			<li class="tab col s3"><a href="#test2">Events</a></li>
+        			<li class="tab col s3"><a href="#test3">Series</a></li>
+     			</ul>
+	 		</div>
+	 	</div>
+	    <div class="col l3 m6 s12" ng-repeat="comic in comics">
+	        <div class="card small">
+	            <div class="card-image waves-effect waves-block waves-light">
+	                <img ng-show="comic.thumbnail  != null" class="responsive-img activator" ng-src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" />
+	                <img ng-show="comic.thumbnail  == null" src="images/marvel-characters.jpg" class="activator responsive-img" />
+	            </div>
+	            <div class="card-content">
+	                <div class="center">
+	                    <span class="card-title truncate activator">{{comic.title}} <i class="material-icons right">more_vert</i></span>
+	                </div>
+	            </div>
+	            <div class="card-reveal">
+      				<span class="card-title grey-text text-darken-4">{{comic.title}}<i class="material-icons right">close</i></span>
+      				<p>{{comic.description}}</p>
+      				<div class="divider"></div>
+  					<div class="section">
+    					<h5>Prices</h5>
+    					<span ng-repeat="price in comic.prices">
+    						{{price.price}} 
+    					</span>
+  					</div>
+      				<div class="divider"></div>
+  					<div class="section">
+    					<h5>Creators</h5>
+    					<span ng-repeat="creator in comic.creators.items">
+    						{{creator.name}}
+    					</span>
+  					</div>
+    			</div>
+	        </div>
+	    </div>
+	    <div class="center">
+        	<a ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
+            	<i class="material-icons left">more_horiz</i>Show More
+        	</a>
+    	</div>
+</div>
