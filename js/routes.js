@@ -17,6 +17,10 @@ routes.config(function($routeProvider) {
         templateUrl: "partials/story.html",
         controller: "StoryController",
     })
+    .when("/event/:id", {
+        templateUrl: "partials/event.html",
+        controller: "EventController",
+    })
     .otherwise({
         redirectTo: "/characters"
     });

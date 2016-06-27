@@ -120,3 +120,46 @@ controllers.controller("StoriesController", function($scope, $routeParams, Chara
         return $scope.total == $scope.stories.length;
     };
 });
+
+controllers.controller("EventController", function($scope, $routeParams, Characters) {
+    $scope.event;
+    $scope.eventCharacters;
+
+    Characters.event($routeParams.id).then(function(resolve) {
+        $scope.event = resolve;
+    });
+
+    Characters.evChacacters($routeParams.id).then(function(resolve) {
+        $scope.eventCharacters = resolve;
+    });
+
+});
+
+controllers.controller("EventsController", function($scope, $routeParams, Characters) {
+    $scope.character;
+    $scope.events;
+    $scope.total;
+
+    Characters.character($routeParams.id).then(function(resolve) {
+        $scope.character = resolve;
+    });
+
+    Characters.events($routeParams.id).then(function(resolve) {
+        $scope.events = resolve.results;
+        $scope.total = resolve.total;
+    });
+
+    $scope.showMore = function() {
+        var offset = $scope.events.length;
+        Characters.events($scope.character.id, offset).then(function(resolve) {
+            Array.prototype.push.apply($scope.events, resolve.results);
+        });
+    };
+
+    $scope.hideMoreButton = function() {
+        if (typeof $scope.events == "undefined") {
+            return true;
+        }
+        return $scope.total == $scope.events.length;
+    };
+});
