@@ -1,24 +1,35 @@
 <div class="container">
     <div class="row">
-        <div class="col l3 m6 s12" ng-repeat="character in characters">
-        <a ng-href="#character/{{character.id}}">
-            <div class="card small">
-                <div class="card-image">
-                    <img class="responsive-img" ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}" />
-                </div>
-                <div class="card-content">
-                    <div class="center">
-                        <span class="card-title truncate">{{character.name}}</span>
+        <div class="col s12 m12 l12">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        <img ng-show="comic.thumbnail != null" ng-src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" class="responsive-img"  /> 
+                        <img ng-show="comic.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="responsive-img" />
+                    </div>
+                    <div class="col s12 m8 l8">
+                        <span class="black-text">
+                            <h3>{{comic.title}}</h3
+                            <p>{{comic.description}}</p>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Variant Description</h5>
+                                <p>{{comic.variantDescription}}</p>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Characters</h5>
+                                <p ng-repeat="comicCharacter in comic.characters.items">{{comicCharacter.name}}</p>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Creators</h5>
+                                <p ng-repeat="comicCreator in comic.creators.items">{{comicCreator.name}}</p>
+                            </div>  
+                        </span>
                     </div>
                 </div>
             </div>
-            </a>
         </div>
-    </div>
-    
-    <div class="col s12 m12 l12 center">
-        <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
-            <i class="material-icons left">more_horiz</i>Show More
-        </a>
     </div>
 </div>
