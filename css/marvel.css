@@ -11,3 +11,9 @@ main {
 .tabs .indicator {
     background-color: #F44336;
 }
+
+.progress {
+    margin: 0;
+    position: fixed;
+    border-radius: 0;
+}

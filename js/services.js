@@ -67,3 +67,16 @@ services.factory("Characters", function($http, $q, marvelApi) {
         }
     }
 });
+
+services.factory("loadingInterceptor", function() {
+    return {
+        request: function(config) {
+            $(".loading").show();
+            return config;
+        },
+        response: function(response) {
+            $(".loading").hide();
+            return response;
+        }
+    }
+});
