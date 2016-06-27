@@ -14,7 +14,7 @@ services.factory("Characters", function($http, $q, marvelApi) {
                     hash: marvelApi.HASH
                 }
             }).success(function(response) {
-                deferred.resolve(response.data.results);
+                deferred.resolve(response.data);
             });
             return deferred.promise;
         },
@@ -45,7 +45,7 @@ services.factory("Characters", function($http, $q, marvelApi) {
                     hash: marvelApi.HASH
                 }
             }).success(function(response) {
-                deferred.resolve(response.data.results);
+                deferred.resolve(response.data);
             });
             return deferred.promise;
         },
@@ -61,7 +61,7 @@ services.factory("Characters", function($http, $q, marvelApi) {
                     hash: marvelApi.HASH
                 }
             }).success(function(response) {
-                deferred.resolve(response.data.results);
+                deferred.resolve(response.data);
             });
             return deferred.promise;
         }

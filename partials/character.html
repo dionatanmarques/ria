@@ -72,10 +72,13 @@
                     </div>
                 </div>
             </div>
-            <div class="center">
-                <a ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
+            <div class="col s12 m12 l12 center">
+                <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
                     <i class="material-icons left">more_horiz</i>Show More
                 </a>
+            </div>
+            <div class="col s12 m12 l12 center" ng-show="total == 0">
+                <h3 class="grey-text lighten 1">No Comics</h3>
             </div>
         </div>
         <div id="stories" class="col s12 m12 l12" ng-controller="StoriesController">
@@ -103,10 +106,13 @@
                     </div>
                 </div>
             </div>
-            <div class="center">
-                <a ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
+            <div class="col s12 m12 l12 center">
+                <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
                     <i class="material-icons left">more_horiz</i>Show More
                 </a>
+            </div>
+            <div class="col s12 m12 l12 center" ng-show="total == 0">
+                <h3 class="grey-text lighten 1">No Stories</h3>
             </div>
         </div>
         <div id="events" class="col s12 m12 l12">
