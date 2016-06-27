@@ -68,26 +68,17 @@
         <div id="stories" class="col s12 m12 l12" ng-controller="StoriesController">
             <div class="col l3 m6 s12" ng-repeat="story in stories">
                 <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img ng-show="story.thumbnail != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
-                        <img ng-show="story.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="activator responsive-img" />
-                    </div>
-                    <div class="card-content">
-                        <div class="center">
-                            <span class="card-title truncate activator">{{story.title}} <i class="material-icons right">more_vert</i></span>
+                    <a ng-href="#story/{{story.id}}">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img ng-show="story.thumbnail != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
+                            <img ng-show="story.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="activator responsive-img" />
                         </div>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{{story.title}}<i class="material-icons right">close</i></span>
-                        <p>{{story.description}}</p>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>Creators</h5>
-                            <span ng-repeat="creator in story.creators.items">
-                                {{creator.name}}
-                            </span>
+                        <div class="card-content">
+                            <div class="center">
+                                <span class="card-title truncate activator">{{story.title}} <i class="material-icons right">more_vert</i></span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col s12 m12 l12 center">

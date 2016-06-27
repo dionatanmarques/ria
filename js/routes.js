@@ -13,6 +13,10 @@ routes.config(function($routeProvider) {
         templateUrl: "partials/comic.html",
         controller: "ComicController",
     })
+    .when("/story/:id", {
+        templateUrl: "partials/story.html",
+        controller: "StoryController",
+    })
     .otherwise({
         redirectTo: "/characters"
     });

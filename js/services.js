@@ -95,6 +95,84 @@ services.factory("Characters", function($http, $q, marvelApi) {
                 deferred.resolve(response.data);
             });
             return deferred.promise;
+        },
+        story: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/stories/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
+        },
+        stChacacters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/stories/" + id +"/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
+        },
+        events: function(id, offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/characters/" + id + "/events",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data);
+            });
+            return deferred.promise;
+        },
+        event: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/events/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
+        },
+        evChacacters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/events/" + id +"/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
         }
     }
 });

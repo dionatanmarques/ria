@@ -78,6 +78,20 @@ controllers.controller("ComicsController", function($scope, $routeParams, Charac
     };
 });
 
+controllers.controller("StoryController", function($scope, $routeParams, Characters) {
+    $scope.story;
+    $scope.storyCharacters;
+    
+    Characters.story($routeParams.id).then(function(resolve) {
+        $scope.story = resolve;
+    });
+
+    Characters.stChacacters($routeParams.id).then(function(resolve) {
+        $scope.storyCharacters = resolve;
+    });
+
+});
+
 controllers.controller("StoriesController", function($scope, $routeParams, Characters) {
     $scope.character;
     $scope.stories;
