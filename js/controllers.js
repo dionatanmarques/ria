@@ -35,6 +35,13 @@ controllers.controller("CharacterController", function($scope, $routeParams, Cha
         $scope.character = resolve;
     });
 });
+controllers.controller("ComicController", function($scope, $routeParams, Characters) {
+    $scope.comic;
+
+    Characters.comic($routeParams.id).then(function(resolve) {
+        $scope.comic = resolve;
+    });
+});
 
 controllers.controller("ComicsController", function($scope, $routeParams, Characters) {
     $scope.character;
