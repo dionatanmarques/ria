@@ -91,7 +91,29 @@
             </div>
         </div>
         <div id="events" class="col s12 m12 l12">
-            EVENTS
+            <div class="col l3 m6 s12" ng-repeat="event in events">
+                <div class="card small">
+                    <a ng-href="#event/{{event.id}}">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img ng-show="event.thumbnail != null" class="responsive-img activator" ng-src="{{event.thumbnail.path + '.' + event.thumbnail.extension}}" />
+                            <img ng-show="event.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="activator responsive-img" />
+                        </div>
+                        <div class="card-content">
+                            <div class="center">
+                                <span class="card-title truncate activator">{{event.title}} <i class="material-icons right">more_vert</i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m12 l12 center">
+                <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
+                    <i class="material-icons left">more_horiz</i>Show More
+                </a>
+            </div>
+            <div class="col s12 m12 l12 center" ng-show="total == 0">
+                <h3 class="grey-text lighten 1">No Stories</h3>
+            </div>
         </div>
         <div id="series" class="col s12 m12 l12">
             SERIES
