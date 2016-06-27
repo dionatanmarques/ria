@@ -37,10 +37,16 @@ controllers.controller("CharacterController", function($scope, $routeParams, Cha
 });
 controllers.controller("ComicController", function($scope, $routeParams, Characters) {
     $scope.comic;
-
+    $scope.comicCharacters;
+    
     Characters.comic($routeParams.id).then(function(resolve) {
         $scope.comic = resolve;
     });
+
+    Characters.cChacacters($routeParams.id).then(function(resolve) {
+        $scope.comicCharacters = resolve;
+    });
+
 });
 
 controllers.controller("ComicsController", function($scope, $routeParams, Characters) {

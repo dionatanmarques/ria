@@ -19,7 +19,16 @@
                             <div class="divider"></div>
                             <div class="section">
                                 <h5>Characters</h5>
-                                <p ng-repeat="comicCharacter in comic.characters.items">{{comicCharacter.name}}</p>
+                                <p >{{}}</p>
+                                <ul class="collection" ng-repeat="comicCharacter in comicCharacters">
+                                    <li class="collection-item avatar">
+                                        <a ng-href="#character/{{comicCharacter.id}}">
+                                            <img ng-show="comicCharacter.thumbnail != null" ng-src="{{comicCharacter.thumbnail.path + '.' + comicCharacter.thumbnail.extension}}" class="circle responsive-img"  /> 
+                                            <img ng-show="comicCharacter.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="circle responsive-img" />
+                                            <span class="title">{{comicCharacter.name}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="divider"></div>
                             <div class="section">
