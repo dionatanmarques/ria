@@ -31,8 +31,8 @@
 	    <div class="col l3 m6 s12" ng-repeat="story in stories">
 	        <div class="card small">
 	            <div class="card-image waves-effect waves-block waves-light">
-	                <img <img ng-show="story.thumbnail  != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
-	                <img ng-show="story.thumbnail  == null" src="images/marvel-characters.jpg" class="activator responsive-img" />
+	                <img ng-show="story.thumbnail != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
+	                <img ng-show="story.thumbnail == null" src="images/marvel-characters.jpg" class="activator responsive-img" />
 	            </div>
 	            <div class="card-content">
 	                <div class="center">

@@ -6,15 +6,8 @@ routes.config(function($routeProvider) {
         controller: "CharactersController"
     })
     .when("/character/:id", {
-    	templateUrl: "partials/character-comics.html",
-    	controller: "ComicsController",
-    })
-    .when("/character/:id/comics",{
-    	redirectTo : "/character/:id"
-    })
-    .when("/character/:id/stories", {
-    	templateUrl: "partials/character-stories.html",
-    	controller: "StoriesController",
+    	templateUrl: "partials/character.html",
+    	controller: "CharacterController",
     })
     .otherwise({
         redirectTo: "/characters"

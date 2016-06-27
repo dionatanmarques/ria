@@ -18,11 +18,11 @@ services.factory("Characters", function($http, $q, marvelApi) {
             });
             return deferred.promise;
         },
-        character: function(id){
+        character: function(id) {
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: marvelApi.URL + "/characters/"+id,
+                url: marvelApi.URL + "/characters/" + id,
                 params: {
                     apikey: marvelApi.KEY,
                     ts: marvelApi.TS,
@@ -33,34 +33,34 @@ services.factory("Characters", function($http, $q, marvelApi) {
             });
             return deferred.promise;
         },
-        comics: function(id, offset){
+        comics: function(id, offset) {
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: marvelApi.URL + "/characters/"+id+"/comics",
+                url: marvelApi.URL + "/characters/" + id + "/comics",
                 params: {
                     offset: offset | 0,
                     apikey: marvelApi.KEY,
                     ts: marvelApi.TS,
                     hash: marvelApi.HASH
                 }
-            }).success(function(response){
+            }).success(function(response) {
                 deferred.resolve(response.data.results);
             });
             return deferred.promise;
         },
-        stories: function(id, offset){
+        stories: function(id, offset) {
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: marvelApi.URL + "/characters/"+id+"/stories",
+                url: marvelApi.URL + "/characters/" + id + "/stories",
                 params: {
                     offset: offset | 0,
                     apikey: marvelApi.KEY,
                     ts: marvelApi.TS,
                     hash: marvelApi.HASH
                 }
-            }).success(function(response){
+            }).success(function(response) {
                 deferred.resolve(response.data.results);
             });
             return deferred.promise;

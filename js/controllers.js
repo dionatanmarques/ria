@@ -11,49 +11,58 @@ controllers.controller("CharactersController", function($scope, Characters) {
         var offset = $scope.characters.length;
         Characters.all(offset).then(function(resolve) {
             Array.prototype.push.apply($scope.characters, resolve);
-            console.log($scope.characters);
         });
     }
-})
-.controller('CharacterController', function($scope, Characters, $routeParams){
-    Characters.character($routeParams.id).then(function(resolve){
-            $scope.character = resolve;
-             console.log(resolve);
+});
+
+controllers.controller("CharacterController", function($scope, $routeParams, Characters) {
+    angular.element(document).ready(function() {
+        $("ul.tabs").tabs();
     });
-})
-.controller('ComicsController', function($scope, Characters, $routeParams){
-    Characters.character($routeParams.id).then(function(resolve){
-            $scope.character = resolve;
-             console.log(resolve);
+
+    $scope.character;
+
+    Characters.character($routeParams.id).then(function(resolve) {
+        $scope.character = resolve;
     });
-    Characters.comics($routeParams.id).then(function(resolve){
-            $scope.comics = resolve;
-             console.log(resolve);
+});
+
+controllers.controller("ComicsController", function($scope, Characters, $routeParams) {
+    $scope.character;
+    $scope.comics;
+
+    Characters.character($routeParams.id).then(function(resolve) {
+        $scope.character = resolve;
+    });
+
+    Characters.comics($routeParams.id).then(function(resolve) {
+        $scope.comics = resolve;
     });
 
     $scope.showMore = function() {
         var offset = $scope.comics.length;
         Characters.comics($scope.character.id, offset).then(function(resolve) {
             Array.prototype.push.apply($scope.comics, resolve);
-            console.log($scope.comics);
         });
     }
-})
-.controller('StoriesController', function($scope, Characters, $routeParams){
-    Characters.character($routeParams.id).then(function(resolve){
-            $scope.character = resolve;
-             console.log(resolve);
+});
+
+controllers.controller("StoriesController", function($scope, Characters, $routeParams) {
+    $scope.character;
+    $scope.stories;
+
+    Characters.character($routeParams.id).then(function(resolve) {
+        $scope.character = resolve;
     });
-    Characters.stories($routeParams.id).then(function(resolve){
-            $scope.stories = resolve;
-             console.log(resolve);
+
+    Characters.stories($routeParams.id).then(function(resolve) {
+        $scope.stories = resolve;
     });
 
     $scope.showMore = function() {
         var offset = $scope.stories.length;
         Characters.stories($scope.character.id, offset).then(function(resolve) {
             Array.prototype.push.apply($scope.stories, resolve);
-            console.log($scope.stories);
         });
     }
 });
