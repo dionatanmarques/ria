@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        <img ng-show="event.thumbnail != null" ng-src="{{event.thumbnail.path + '.' + event.thumbnail.extension}}" class="responsive-img"  />
+                        <img ng-show="event.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="responsive-img" />
+                    </div>
+                    <div class="col s12 m8 l8">
+                        <span class="black-text">
+                            <h3>{{event.title}}</h3>
+                            <p>{{event.description}}</p>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Variant Description</h5>
+                                <p>{{event.variantDescription}}</p>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Characters</h5>
+                                <ul class="collection" ng-repeat="eventCharacter in eventCharacters">
+                                    <li class="collection-item avatar">
+                                        <a ng-href="#character/{{eventCharacter.id}}">
+                                            <img ng-show="eventCharacter.thumbnail != null" ng-src="{{eventCharacter.thumbnail.path + '.' + eventCharacter.thumbnail.extension}}" class="circle responsive-img"  />
+                                            <img ng-show="eventCharacter.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="circle responsive-img" />
+                                            <span class="title">{{eventCharacter.name}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>Creators</h5>
+                                <p ng-repeat="eventCreator in event.creators.items">{{eventCreator.name}}</p>
+                            </div>  
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
