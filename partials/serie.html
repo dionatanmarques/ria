@@ -12,7 +12,6 @@
                             <h3>{{serie.title}}</h3>
                             <p>{{serie.description}}</p>
                             <div class="divider"></div>
-                            <div class="divider"></div>
                             <div class="section">
                                 <h5>Characters</h5>
                                 <ul class="collection" ng-repeat="serieCharacter in serieCharacters">
@@ -28,7 +27,7 @@
                             <div class="divider"></div>
                             <div class="section">
                                 <h5>Creators</h5>
-                                <p ng-repeat="eventCreator in event.creators.items">{{eventCreator.name}}</p>
+                                <p ng-repeat="serieCreator in serie.creators.items">{{serieCreator.name}}</p>
                             </div>  
                         </span>
                     </div>
