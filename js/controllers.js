@@ -35,19 +35,6 @@ controllers.controller("CharacterController", function($scope, $routeParams, Cha
         $scope.character = resolve;
     });
 });
-controllers.controller("ComicController", function($scope, $routeParams, Characters) {
-    $scope.comic;
-    $scope.comicCharacters;
-    
-    Characters.comic($routeParams.id).then(function(resolve) {
-        $scope.comic = resolve;
-    });
-
-    Characters.cChacacters($routeParams.id).then(function(resolve) {
-        $scope.comicCharacters = resolve;
-    });
-
-});
 
 controllers.controller("ComicsController", function($scope, $routeParams, Characters) {
     $scope.character;
@@ -78,18 +65,17 @@ controllers.controller("ComicsController", function($scope, $routeParams, Charac
     };
 });
 
-controllers.controller("StoryController", function($scope, $routeParams, Characters) {
-    $scope.story;
-    $scope.storyCharacters;
+controllers.controller("ComicController", function($scope, $routeParams, Comics) {
+    $scope.comic;
+    $scope.comicCharacters;
     
-    Characters.story($routeParams.id).then(function(resolve) {
-        $scope.story = resolve;
+    Comics.comic($routeParams.id).then(function(resolve) {
+        $scope.comic = resolve;
     });
 
-    Characters.stChacacters($routeParams.id).then(function(resolve) {
-        $scope.storyCharacters = resolve;
+    Comics.characters($routeParams.id).then(function(resolve) {
+        $scope.comicCharacters = resolve;
     });
-
 });
 
 controllers.controller("StoriesController", function($scope, $routeParams, Characters) {
@@ -121,18 +107,17 @@ controllers.controller("StoriesController", function($scope, $routeParams, Chara
     };
 });
 
-controllers.controller("EventController", function($scope, $routeParams, Characters) {
-    $scope.event;
-    $scope.eventCharacters;
-
-    Characters.event($routeParams.id).then(function(resolve) {
-        $scope.event = resolve;
+controllers.controller("StoryController", function($scope, $routeParams, Stories) {
+    $scope.story;
+    $scope.storyCharacters;
+    
+    Stories.story($routeParams.id).then(function(resolve) {
+        $scope.story = resolve;
     });
 
-    Characters.evChacacters($routeParams.id).then(function(resolve) {
-        $scope.eventCharacters = resolve;
+    Stories.characters($routeParams.id).then(function(resolve) {
+        $scope.storyCharacters = resolve;
     });
-
 });
 
 controllers.controller("EventsController", function($scope, $routeParams, Characters) {
@@ -164,18 +149,17 @@ controllers.controller("EventsController", function($scope, $routeParams, Charac
     };
 });
 
-controllers.controller("SerieController", function($scope, $routeParams, Characters) {
-    $scope.serie;
-    $scope.serieCharacters;
+controllers.controller("EventController", function($scope, $routeParams, Events) {
+    $scope.event;
+    $scope.eventCharacters;
 
-    Characters.serie($routeParams.id).then(function(resolve) {
-        $scope.serie = resolve;
+    Events.event($routeParams.id).then(function(resolve) {
+        $scope.event = resolve;
     });
 
-    Characters.seChacacters($routeParams.id).then(function(resolve) {
-        $scope.serieCharacters = resolve;
+    Events.characters($routeParams.id).then(function(resolve) {
+        $scope.eventCharacters = resolve;
     });
-
 });
 
 controllers.controller("SeriesController", function($scope, $routeParams, Characters) {
@@ -205,4 +189,17 @@ controllers.controller("SeriesController", function($scope, $routeParams, Charac
         }
         return $scope.total == $scope.series.length;
     };
+});
+
+controllers.controller("SerieController", function($scope, $routeParams, Series) {
+    $scope.serie;
+    $scope.serieCharacters;
+
+    Series.serie($routeParams.id).then(function(resolve) {
+        $scope.serie = resolve;
+    });
+
+    Series.characters($routeParams.id).then(function(resolve) {
+        $scope.serieCharacters = resolve;
+    });
 });

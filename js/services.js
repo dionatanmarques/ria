@@ -28,7 +28,7 @@ services.factory("Characters", function($http, $q, marvelApi) {
                     ts: marvelApi.TS,
                     hash: marvelApi.HASH
                 }
-            }).success(function(response){
+            }).success(function(response) {
                 deferred.resolve(response.data.results[0]);
             });
             return deferred.promise;
@@ -49,37 +49,6 @@ services.factory("Characters", function($http, $q, marvelApi) {
             });
             return deferred.promise;
         },
-         comic: function(id) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/comics/" + id,
-                params: {
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results[0]);
-            });
-            return deferred.promise;
-        },
-        cChacacters: function(id,offset) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/comics/" + id +"/characters",
-                params: {
-                    offset: offset | 0,
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results);
-            });
-            return deferred.promise;
-        },
         stories: function(id, offset) {
             var deferred = $q.defer();
             $http({
@@ -93,37 +62,6 @@ services.factory("Characters", function($http, $q, marvelApi) {
                 }
             }).success(function(response) {
                 deferred.resolve(response.data);
-            });
-            return deferred.promise;
-        },
-        story: function(id) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/stories/" + id,
-                params: {
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results[0]);
-            });
-            return deferred.promise;
-        },
-        stChacacters: function(id,offset) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/stories/" + id +"/characters",
-                params: {
-                    offset: offset | 0,
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results);
             });
             return deferred.promise;
         },
@@ -143,37 +81,6 @@ services.factory("Characters", function($http, $q, marvelApi) {
             });
             return deferred.promise;
         },
-        event: function(id) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/events/" + id,
-                params: {
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results[0]);
-            });
-            return deferred.promise;
-        },
-        evChacacters: function(id,offset) {
-            var deferred = $q.defer();
-            $http({
-                method: "GET",
-                url: marvelApi.URL + "/events/" + id +"/characters",
-                params: {
-                    offset: offset | 0,
-                    apikey: marvelApi.KEY,
-                    ts: marvelApi.TS,
-                    hash: marvelApi.HASH
-                }
-            }).success(function(response){
-                deferred.resolve(response.data.results);
-            });
-            return deferred.promise;
-        },
         series: function(id, offset) {
             var deferred = $q.defer();
             $http({
@@ -189,7 +96,84 @@ services.factory("Characters", function($http, $q, marvelApi) {
                 deferred.resolve(response.data);
             });
             return deferred.promise;
+        }
+    }
+});
+
+services.factory("Comics", function($http, $q, marvelApi) {
+    return {
+        comic: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/comics/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
         },
+        characters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/comics/" + id + "/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
+        }
+    }
+});
+
+services.factory("Events", function($http, $q, marvelApi) {
+    return {
+        event: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/events/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
+        },
+        characters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/events/" + id + "/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
+        }
+    }
+});
+
+services.factory("Series", function($http, $q, marvelApi) {
+    return {
         serie: function(id) {
             var deferred = $q.defer();
             $http({
@@ -200,28 +184,63 @@ services.factory("Characters", function($http, $q, marvelApi) {
                     ts: marvelApi.TS,
                     hash: marvelApi.HASH
                 }
-            }).success(function(response){
+            }).success(function(response) {
                 deferred.resolve(response.data.results[0]);
             });
             return deferred.promise;
         },
-        seChacacters: function(id,offset) {
+        characters: function(id,offset) {
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: marvelApi.URL + "/series/" + id +"/characters",
+                url: marvelApi.URL + "/series/" + id + "/characters",
                 params: {
                     offset: offset | 0,
                     apikey: marvelApi.KEY,
                     ts: marvelApi.TS,
                     hash: marvelApi.HASH
                 }
-            }).success(function(response){
+            }).success(function(response) {
                 deferred.resolve(response.data.results);
             });
             return deferred.promise;
         }
+    }
+});
 
+services.factory("Stories", function($http, $q, marvelApi) {
+    return {
+        story: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/stories/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
+        },
+        characters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/stories/" + id + "/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
+        }
     }
 });
 

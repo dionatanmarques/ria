@@ -24,11 +24,6 @@
                     </a>
                 </li>
                 <li class="tab col s3 m3 l3">
-                    <a href="#stories" class="red-text darken-2">
-                        Stories
-                    </a>
-                </li>
-                <li class="tab col s3 m3 l3">
                     <a href="#events" class="red-text darken-2">
                         Events
                     </a>
@@ -36,6 +31,11 @@
                 <li class="tab col s3 m3 l3">
                     <a href="#series" class="red-text darken-2">
                         Series
+                    </a>
+                </li>
+                <li class="tab col s3 m3 l3">
+                    <a href="#stories" class="red-text darken-2">
+                        Stories
                     </a>
                 </li>
             </ul>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="card-content">
                             <div class="center">
-                                <span class="card-title truncate activator">{{comic.title}} <i class="material-icons right">more_vert</i></span>
+                                <span class="card-title truncate activator">{{comic.title}}</span>
                             </div>
                         </div>
                     </div>
@@ -65,31 +65,6 @@
                 <h3 class="grey-text lighten 1">No Comics</h3>
             </div>
         </div>
-        <div id="stories" class="col s12 m12 l12" ng-controller="StoriesController">
-            <div class="col l3 m6 s12" ng-repeat="story in stories">
-                <div class="card small">
-                    <a ng-href="#story/{{story.id}}">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img ng-show="story.thumbnail != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
-                            <img ng-show="story.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="activator responsive-img" />
-                        </div>
-                        <div class="card-content">
-                            <div class="center">
-                                <span class="card-title truncate activator">{{story.title}} <i class="material-icons right">more_vert</i></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col s12 m12 l12 center">
-                <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
-                    <i class="material-icons left">more_horiz</i>Show More
-                </a>
-            </div>
-            <div class="col s12 m12 l12 center" ng-show="total == 0">
-                <h3 class="grey-text lighten 1">No Stories</h3>
-            </div>
-        </div>
         <div id="events" class="col s12 m12 l12"  ng-controller="EventsController">
             <div class="col l3 m6 s12" ng-repeat="event in events">
                 <div class="card small">
@@ -100,7 +75,7 @@
                         </div>
                         <div class="card-content">
                             <div class="center">
-                                <span class="card-title truncate activator">{{event.title}} <i class="material-icons right">more_vert</i></span>
+                                <span class="card-title truncate activator">{{event.title}}</span>
                             </div>
                         </div>
                     </a>
@@ -125,7 +100,7 @@
                         </div>
                         <div class="card-content">
                             <div class="center">
-                                <span class="card-title truncate activator">{{serie.title}} <i class="material-icons right">more_vert</i></span>
+                                <span class="card-title truncate activator">{{serie.title}}</span>
                             </div>
                         </div>
                     </a>
@@ -138,6 +113,31 @@
             </div>
             <div class="col s12 m12 l12 center" ng-show="total == 0">
                 <h3 class="grey-text lighten 1">No Series</h3>
+            </div>
+        </div>
+        <div id="stories" class="col s12 m12 l12" ng-controller="StoriesController">
+            <div class="col l3 m6 s12" ng-repeat="story in stories">
+                <div class="card small">
+                    <a ng-href="#story/{{story.id}}">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img ng-show="story.thumbnail != null" class="responsive-img activator" ng-src="{{story.thumbnail.path + '.' + story.thumbnail.extension}}" />
+                            <img ng-show="story.thumbnail == null" src="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" class="activator responsive-img" />
+                        </div>
+                        <div class="card-content">
+                            <div class="center">
+                                <span class="card-title truncate activator">{{story.title}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m12 l12 center">
+                <a ng-hide="hideMoreButton()" ng-click="showMore()" class="waves-effect waves-light btn red accent-2">
+                    <i class="material-icons left">more_horiz</i>Show More
+                </a>
+            </div>
+            <div class="col s12 m12 l12 center" ng-show="total == 0">
+                <h3 class="grey-text lighten 1">No Stories</h3>
             </div>
         </div>
     </div>
