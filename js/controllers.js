@@ -163,3 +163,46 @@ controllers.controller("EventsController", function($scope, $routeParams, Charac
         return $scope.total == $scope.events.length;
     };
 });
+
+controllers.controller("SerieController", function($scope, $routeParams, Characters) {
+    $scope.serie;
+    $scope.serieCharacters;
+
+    Characters.serie($routeParams.id).then(function(resolve) {
+        $scope.serie = resolve;
+    });
+
+    Characters.seChacacters($routeParams.id).then(function(resolve) {
+        $scope.serieCharacters = resolve;
+    });
+
+});
+
+controllers.controller("SeriesController", function($scope, $routeParams, Characters) {
+    $scope.character;
+    $scope.series;
+    $scope.total;
+
+    Characters.character($routeParams.id).then(function(resolve) {
+        $scope.character = resolve;
+    });
+
+    Characters.series($routeParams.id).then(function(resolve) {
+        $scope.series = resolve.results;
+        $scope.total = resolve.total;
+    });
+
+    $scope.showMore = function() {
+        var offset = $scope.series.length;
+        Characters.series($scope.character.id, offset).then(function(resolve) {
+            Array.prototype.push.apply($scope.series, resolve.results);
+        });
+    };
+
+    $scope.hideMoreButton = function() {
+        if (typeof $scope.series == "undefined") {
+            return true;
+        }
+        return $scope.total == $scope.series.length;
+    };
+});

@@ -173,7 +173,55 @@ services.factory("Characters", function($http, $q, marvelApi) {
                 deferred.resolve(response.data.results);
             });
             return deferred.promise;
+        },
+        series: function(id, offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/characters/" + id + "/series",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response) {
+                deferred.resolve(response.data);
+            });
+            return deferred.promise;
+        },
+        serie: function(id) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/series/" + id,
+                params: {
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results[0]);
+            });
+            return deferred.promise;
+        },
+        seChacacters: function(id,offset) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: marvelApi.URL + "/series/" + id +"/characters",
+                params: {
+                    offset: offset | 0,
+                    apikey: marvelApi.KEY,
+                    ts: marvelApi.TS,
+                    hash: marvelApi.HASH
+                }
+            }).success(function(response){
+                deferred.resolve(response.data.results);
+            });
+            return deferred.promise;
         }
+
     }
 });
 
